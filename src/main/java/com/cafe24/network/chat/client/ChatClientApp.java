@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ChatClientApp {
-	private static final String SERVER_IP="127.0.0.1";  
+	private static final String SERVER_IP="0.0.0.0";  
 	private static final int SERVER_PORT= 8888;
 	
 
@@ -39,7 +39,6 @@ public class ChatClientApp {
 		
 		//connect()
 		sock.connect(new InetSocketAddress(SERVER_IP,SERVER_PORT));
-		
 		// iostream 초기화
 		
 			br = new BufferedReader(new InputStreamReader(sock.getInputStream(),"utf-8"));

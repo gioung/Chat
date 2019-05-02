@@ -27,7 +27,6 @@ public class ChatWindow {
 	private TextArea textArea;
 	private BufferedReader br = null;
 	private PrintWriter pw = null;
-	private int ThreadState = 0;
 	private Socket sock = null;
 
 	public ChatWindow(String name,BufferedReader br,PrintWriter pw,Socket sock) {
@@ -129,8 +128,18 @@ public class ChatWindow {
 		
 	}
 	private void sendMessage() {
-		String message=textField.getText();
+		String message=" ";
+		if(!textField.getText().equals("")) {
+			message=textField.getText();
+			String[] str=message.split(":");
+			StringBuilder remessage = new StringBuilder("");
+			for(String token:str)
+				remessage.append(token);
+			pw.println("message:"+remessage);
+		}
+		else {
 		pw.println("message:"+message);
+		}
 		pw.flush();
 		
 		textField.setText("");
